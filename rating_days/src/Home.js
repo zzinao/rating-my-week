@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router'
+import { FaHeart } from 'react-icons/fa'
+import styled from 'styled-components'
 // 메인페이지 입니다요 //
 
 const Home = (props) => {
@@ -40,28 +42,66 @@ const Home = (props) => {
 
   //메인 화면에 보일 것들
   return (
-    <div className="contanier">
-      <h2>나의 일주일 평점은?</h2>
+    <Container>
+      <Title>나의 일주일 점수는?</Title>
+      <hr />
       {weekRate.map((w, idx) => {
         return (
-          <div>
-            <p>{w.day}</p>
+          <Box key={`weekDays_${idx}`}>
+            <Day>{w.day}</Day>
             {Array.from({ length: 5 }, (item, idx) => {
-              return <div>ㅇㅅㅇ</div>
+              return (
+                <FaHeart
+                  className="heart"
+                  size={60}
+                  color={w.rate <= idx ? '#e4e5e9' : '#FA928C'}
+                />
+              )
             })}
 
-            <div
+            <Button
               onClick={() => {
                 history.push(`/detail/${w.day}`)
               }}
-            >
-              전송
-            </div>
-          </div>
+            ></Button>
+          </Box>
         )
       })}
-    </div>
+    </Container>
   )
 }
 
+const Container = styled.div`
+  width: 30vw;
+  border: 1px solid #eee;
+  border-radius: 30px;
+  padding: 10px;
+  margin: 50px auto;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+`
+const Title = styled.h1`
+  text-align: center;
+  margin: 40px 0 30px;
+  font-size: 35px;
+`
+
+const Day = styled.h2`
+  font-size: 22px;
+  fonr-weight: b;
+`
+
+const Box = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 20px;
+`
+const Button = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 70%;
+  background-color: #c4c0fd;
+  &:hover {
+    background-color: #f5ee69;
+  }
+`
 export default Home

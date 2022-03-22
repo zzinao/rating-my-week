@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 // 세부 페이지 불러오기
 import Detail from './Detail'
 import Home from './Home'
+import StarRating from './StarRating'
 
 function App() {
   return (
