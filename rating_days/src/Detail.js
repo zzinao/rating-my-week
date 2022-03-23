@@ -16,7 +16,7 @@ const Detail = (props) => {
     <Container>
       {id && (
         <Title>
-          <span style={{ color: '#FA928C' }}>{id}요일</span> 어떠셨나요?
+          <span style={{ color: '#c4c0fd' }}>{id}요일</span> 어떠셨나요?
         </Title>
       )}
       <Box2>
@@ -33,7 +33,7 @@ const Detail = (props) => {
               />
               <FaHeart
                 className="heart"
-                color={ratingValue <= (hover || rating) ? '#FA928C' : '#e4e5e9'}
+                color={ratingValue <= (hover || rating) ? '#FAA49B' : '#e4e5e9'}
                 size={100}
                 onMouseEnter={() => setHover(ratingValue)}
                 onMouseLeave={() => setHover(null)}
@@ -47,43 +47,30 @@ const Detail = (props) => {
             history.goBack()
           }}
         >
-          평점 남기기
+          남기기
         </Button>
       </Box2>
-      <Text>
-        오늘의 점수는 <span style={{ color: '#F59476' }}>{rating}</span>점
-        입니다{' '}
-      </Text>
+      <div>
+        <Score>
+          오늘의 점수는 <span style={{ color: '#FA928C' }}>{rating}</span>점!
+        </Score>
+        {rating === 1 ? (
+          <Text>아니 무슨 일이...😱</Text>
+        ) : rating === 2 ? (
+          <Text>많이 힘든 하루를 보내셨군요🥺</Text>
+        ) : rating === 3 ? (
+          <Text>오늘은 그럭저럭이에요🤔</Text>
+        ) : rating === 4 ? (
+          <Text>꽤 괜찮은 하루를 보냈나 본데~😀</Text>
+        ) : (
+          <Text>최고의 하루를 보내셨네요!😆</Text>
+        )}
+      </div>
     </Container>
-
-    // <div>
-    //   {id && <h2> 오늘은 {id}요일 입니다</h2>}
-    //   <div>
-    //     {Array.from({ length: 5 }, (item, idx) => {
-    //       return (
-    //         <div
-    //           key={idx}
-    //           onClick={() => {
-    //             setRate(idx + 1)
-    //           }}
-    //         >
-    //           gg
-    //         </div>
-    //       )
-    //     })}
-    //   </div>
-    //   <button
-    //     onClick={() => {
-    //       history.push('/')
-    //     }}
-    //   >
-    //     평점 남기기
-    //   </button>
-    // </div>
   )
 }
 const Container = styled.div`
-  width: 40vw;
+  width: 650px;
   border: 1px solid #eee;
   border-radius: 30px;
   margin: 100px auto;
@@ -92,18 +79,27 @@ const Container = styled.div`
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 `
 
-const Title = styled.h2`
+const Title = styled.h1`
   text-align: center;
-  font-size: 30px;
-  margin: 40px;
+  font-size: 45px;
+  margin: 60px 0 20px;
+  color: #3d3339;
 `
 const Label = styled.label`
   margin: 0 auto;
 `
+
+const Score = styled.h2`
+  text-align: center;
+  margin: 5px;
+  font-size: 20px;
+  color: #4d4d4d;
+`
 const Text = styled.h2`
   text-align: center;
-  margin: 30px;
-  font-size: 20px;
+  margin: 20px 0 35px;
+  font-size: 25px;
+  color: #4d4d4d;
 `
 const Box2 = styled.div`
   text-align: center;
@@ -115,10 +111,16 @@ const Button = styled.button`
   background-color: #c4c0fd;
   border: none;
   border-radius: 30px;
-  margin: 30px auto;
+  margin: 50px auto;
   align-items: center;
   color: #fff;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
+    background-color: #f5ee69;
+    color: #c4c0fd;
+  }
 `
 
 export default Detail

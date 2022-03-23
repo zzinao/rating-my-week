@@ -48,13 +48,15 @@ const Home = (props) => {
       {weekRate.map((w, idx) => {
         return (
           <Box key={`weekDays_${idx}`}>
-            <Day>{w.day}</Day>
+            <h3 style={idx === 0 ? { color: '#c4c0fd' } : { color: '#3D3339' }}>
+              {w.day}
+            </h3>
             {Array.from({ length: 5 }, (item, idx) => {
               return (
                 <FaHeart
                   className="heart"
                   size={60}
-                  color={w.rate <= idx ? '#e4e5e9' : '#FA928C'}
+                  color={w.rate <= idx ? '#e4e5e9' : '#FAA49B'}
                 />
               )
             })}
@@ -72,7 +74,7 @@ const Home = (props) => {
 }
 
 const Container = styled.div`
-  width: 30vw;
+  width: 600px;
   border: 1px solid #eee;
   border-radius: 30px;
   padding: 10px;
@@ -82,24 +84,22 @@ const Container = styled.div`
 const Title = styled.h1`
   text-align: center;
   margin: 40px 0 30px;
-  font-size: 35px;
-`
-
-const Day = styled.h2`
-  font-size: 22px;
-  fonr-weight: b;
+  font-size: 40px;
+  color: #3d3339;
 `
 
 const Box = styled.div`
   display: flex;
   align-items: center;
   margin: 20px;
+  font-size: 25px;
 `
 const Button = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 70%;
   background-color: #c4c0fd;
+  cursor: pointer;
   &:hover {
     background-color: #f5ee69;
   }
