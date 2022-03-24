@@ -50,6 +50,7 @@ const Detail = (props) => {
           남기기
         </Button>
       </Box2>
+
       <div>
         <Score>
           오늘의 점수는 <span style={{ color: '#FA928C' }}>{rating}</span>점!
@@ -88,7 +89,9 @@ const Title = styled.h1`
 const Label = styled.label`
   margin: 0 auto;
 `
-
+const Box2 = styled.div`
+  text-align: center;
+`
 const Score = styled.h2`
   text-align: center;
   margin: 5px;
@@ -100,9 +103,6 @@ const Text = styled.h2`
   margin: 20px 0 35px;
   font-size: 25px;
   color: #4d4d4d;
-`
-const Box2 = styled.div`
-  text-align: center;
 `
 const Button = styled.button`
   display: block;
